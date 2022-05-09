@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "CDE5099B-FEF3-4B12-A5AE-48460BB3B202"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "848F44C9-EDAD-4FA4-983F-AC7E2186286C"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "latest-issue-viewer/BookTableViewCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "13"
+            endingLineNumber = "13"
+            landmarkName = "BookTableViewCell"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "848F44C9-EDAD-4FA4-983F-AC7E2186286C - deb2d8867a6c76fd"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "latest_issue_viewer.BookTableViewCell.book_image_imageView.getter : Swift.Optional&lt;__C.UIImageView&gt;"
+                  moduleName = "latest-issue-viewer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/babayamato/Desktop/latest-issue-viewer/latest-issue-viewer/BookTableViewCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "88">
+               </Location>
+               <Location
+                  uuid = "848F44C9-EDAD-4FA4-983F-AC7E2186286C - 7578b8c98575d249"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "latest_issue_viewer.BookTableViewCell.book_image_imageView.setter : Swift.Optional&lt;__C.UIImageView&gt;"
+                  moduleName = "latest-issue-viewer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/babayamato/Desktop/latest-issue-viewer/latest-issue-viewer/BookTableViewCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "108">
+               </Location>
+               <Location
+                  uuid = "848F44C9-EDAD-4FA4-983F-AC7E2186286C - afca8ce0275bcd1f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "latest_issue_viewer.BookTableViewCell.book_image_imageView.modify : Swift.Optional&lt;__C.UIImageView&gt;"
+                  moduleName = "latest-issue-viewer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/babayamato/Desktop/latest-issue-viewer/latest-issue-viewer/BookTableViewCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "48">
+               </Location>
+               <Location
+                  uuid = "848F44C9-EDAD-4FA4-983F-AC7E2186286C - a7635cd3c6e6d1dc"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "latest_issue_viewer.BookTableViewCell.book_image_imageView.modify : Swift.Optional&lt;__C.UIImageView&gt; with unmangled suffix &quot;.resume.0&quot;"
+                  moduleName = "latest-issue-viewer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/babayamato/Desktop/latest-issue-viewer/latest-issue-viewer/BookTableViewCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "28">
+               </Location>
+               <Location
+                  uuid = "848F44C9-EDAD-4FA4-983F-AC7E2186286C - bd8b88eb34ea5ae"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "latest_issue_viewer.BookTableViewCell.init(style: __C.UITableViewCellStyle, reuseIdentifier: Swift.Optional&lt;Swift.String&gt;) -&gt; latest_issue_viewer.BookTableViewCell"
+                  moduleName = "latest-issue-viewer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/babayamato/Desktop/latest-issue-viewer/latest-issue-viewer/BookTableViewCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "132">
+               </Location>
+               <Location
+                  uuid = "848F44C9-EDAD-4FA4-983F-AC7E2186286C - bd8164ce393143cb"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "latest_issue_viewer.BookTableViewCell.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;latest_issue_viewer.BookTableViewCell&gt;"
+                  moduleName = "latest-issue-viewer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/babayamato/Desktop/latest-issue-viewer/latest-issue-viewer/BookTableViewCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "108">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
