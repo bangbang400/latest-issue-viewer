@@ -11,6 +11,7 @@
 		5537A9B12827ABEF0073ED97 /* Realm.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 55AAEC9328277632001EF8AA /* Realm.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		5537A9B22827ABEF0073ED97 /* RealmSwift.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55AAEC9228277632001EF8AA /* RealmSwift.xcframework */; };
 		5537A9B32827ABEF0073ED97 /* RealmSwift.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 55AAEC9228277632001EF8AA /* RealmSwift.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5537A9B6282B1C850073ED97 /* BookAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5537A9B5282B1C850073ED97 /* BookAPI.swift */; };
 		5598E814281E7401008351DD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5598E813281E7401008351DD /* AppDelegate.swift */; };
 		5598E816281E7401008351DD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5598E815281E7401008351DD /* SceneDelegate.swift */; };
 		5598E818281E7401008351DD /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5598E817281E7401008351DD /* SettingViewController.swift */; };
@@ -65,6 +66,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		5537A9B5282B1C850073ED97 /* BookAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookAPI.swift; sourceTree = "<group>"; };
 		5598E810281E7401008351DD /* latest-issue-viewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "latest-issue-viewer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5598E813281E7401008351DD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5598E815281E7401008351DD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -147,6 +149,7 @@
 				5598E815281E7401008351DD /* SceneDelegate.swift */,
 				5598E817281E7401008351DD /* SettingViewController.swift */,
 				55AAEC3F28227CE1001EF8AA /* SearchViewController.swift */,
+				5537A9B5282B1C850073ED97 /* BookAPI.swift */,
 				55AAEC3D28227764001EF8AA /* FavoriteViewController.swift */,
 				55AAEC4728237E52001EF8AA /* BookTableViewCell.swift */,
 				55AAEC4F2824C557001EF8AA /* SearchDetailViewController.swift */,
@@ -335,6 +338,7 @@
 				55AAEC3E28227764001EF8AA /* FavoriteViewController.swift in Sources */,
 				55AAEC502824C557001EF8AA /* SearchDetailViewController.swift in Sources */,
 				55AAEC4928237E52001EF8AA /* BookTableViewCell.swift in Sources */,
+				5537A9B6282B1C850073ED97 /* BookAPI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
