@@ -45,9 +45,10 @@ class SearchViewController: UIViewController,UITableViewDelegate,UITableViewData
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "bookTableView", for: indexPath) as! BookTableViewCell
+        let bookDataItem = bookData[indexPath.row]
+        
         // 本のタイトル
         // cell.book_title_label.text = dammy_data[indexPath.row]
-        let bookDataItem = bookData[indexPath.row]
         cell.book_title_label.text = bookDataItem.Item.title
                 
         // 本の画像
@@ -58,15 +59,15 @@ class SearchViewController: UIViewController,UITableViewDelegate,UITableViewData
                 let imageData = try Data(contentsOf: url!)
                 cell.book_image_imageView.image = UIImage(data: imageData)
             } catch {
-                print("Error : Cat't get image")
+                print("画像が取得できませんでした。")
             }
         } else {
             cell.book_image_imageView.image = UIImage(named: "dog2") //nilの場合は固定画像表示
         }
-//        cell.book_image_imageView.image = UIImage(data: bookDataItem.Item.mediumImageUrl)!
         
-        // 本の概要
-        // cell.book_overview_textfield.text = dammy_overViewdata[indexPath.row]
+        // 本の販売日
+        cell.book_salesDate_textfield.text = bookDataItem.Item.salesDate
+        // cell.book_overview_textfield.text = dammy_overViewdata[indexPath.row]        
         
         
         return cell
@@ -181,7 +182,8 @@ struct BookObject:Codable{
 
 struct Book: Codable{
     let title:String
-    let mediumImageUrl:String?    
+    let mediumImageUrl:String?
+    let salesDate:String
 }
 
 // 標準イニシャライザ

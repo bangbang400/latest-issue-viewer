@@ -11,7 +11,7 @@ class BookTableViewCell: UITableViewCell {
 
     @IBOutlet weak var book_title_label: UILabel!
     @IBOutlet weak var book_image_imageView: UIImageView!
-    @IBOutlet weak var book_overview_textfield: UILabel!
+    @IBOutlet weak var book_salesDate_textfield: UILabel!
             
     override func awakeFromNib() {
         super.awakeFromNib()
