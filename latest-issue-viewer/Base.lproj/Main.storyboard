@@ -91,14 +91,14 @@
                     <connections>
                         <outlet property="api_tableView" destination="3nL-dc-037" id="rVr-FJ-Lhq"/>
                         <outlet property="search_form" destination="Igj-Bc-Y6T" id="3u0-Wc-EcR"/>
-                        <segue destination="PwB-qF-RMB" kind="show" identifier="toSearchDetailViewController" id="n08-ZB-FAN"/>
+                        <segue destination="PwB-qF-RMB" kind="show" identifier="toSearchDetailController" id="SE4-pT-stW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b8z-aW-7L7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="686.25" y="151.05633802816902"/>
         </scene>
-        <!--Search Detail View Controller-->
+        <!--詳細ページ-->
         <scene sceneID="XhV-AD-KPi">
             <objects>
                 <viewController storyboardIdentifier="toSearchDetailViewController" modalTransitionStyle="crossDissolve" modalPresentationStyle="fullScreen" id="PwB-qF-RMB" customClass="SearchDetailViewController" customModule="latest_issue_viewer" customModuleProvider="target" sceneMemberID="viewController">
@@ -106,8 +106,33 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XrD-Yp-eEZ">
-                                <rect key="frame" x="113" y="245" width="42" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="アンパンマン" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XrD-Yp-eEZ">
+                                <rect key="frame" x="80" y="219" width="224" height="46"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cEw-Qs-Lwd">
+                                <rect key="frame" x="85" y="44" width="150" height="150"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="作品名" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bo2-iK-trA">
+                                <rect key="frame" x="16" y="219" width="56" height="46"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="著者" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rPi-Wq-a8F">
+                                <rect key="frame" x="16" y="273" width="56" height="46"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="山田　太郎" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="keo-uA-1sN">
+                                <rect key="frame" x="80" y="273" width="224" height="46"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -117,13 +142,18 @@
                         <viewLayoutGuide key="safeArea" id="csW-Sv-06u"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <navigationItem key="navigationItem" title="詳細ページ" id="WNA-pQ-icW">
+                        <barButtonItem key="backBarButtonItem" title="戻る" id="wzg-rp-xTh"/>
+                    </navigationItem>
                     <connections>
-                        <outlet property="test" destination="XrD-Yp-eEZ" id="d40-MM-cyb"/>
+                        <outlet property="authorNameLabel" destination="keo-uA-1sN" id="d35-9a-iO1"/>
+                        <outlet property="bookImageImageView" destination="cEw-Qs-Lwd" id="gzz-ho-AoS"/>
+                        <outlet property="bookTitleLabel" destination="XrD-Yp-eEZ" id="SsA-NZ-7xh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t2p-M1-2PQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1496" y="151"/>
+            <point key="canvasLocation" x="1494.375" y="150"/>
         </scene>
         <!--お気に入り-->
         <scene sceneID="UN7-Bb-uwt">

@@ -9,13 +9,18 @@ import UIKit
 
 class SearchDetailViewController: UIViewController {
 
-    @IBOutlet weak var test: UILabel!
+    @IBOutlet weak var bookImageImageView: UIImageView!
+    @IBOutlet weak var bookTitleLabel: UILabel!
     
-    var testValue :String?
+    @IBOutlet weak var authorNameLabel: UILabel!
+    
+    var bookTitleValue :String?
+    var authorNameValue :String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        test.text = testValue
+        bookTitleLabel.text = bookTitleValue
+        authorNameLabel.text = authorNameValue
     }
     
 

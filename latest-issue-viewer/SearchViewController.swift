@@ -13,17 +13,9 @@ class SearchViewController: UIViewController,UITableViewDelegate,UITableViewData
     @IBOutlet weak var search_form: UISearchBar!
     @IBOutlet weak var api_tableView: UITableView!
     
-    let dammy_data = ["Apple","Banana","Grape","Pinapple"]
-    let dammy_overViewdata = ["アイウエオかきくけこ","アイウエオかきくけこ","アイウエオかきくけこ","アイウエオかきくけこ"]
+    // let dammy_data = ["Apple","Banana","Grape","Pinapple"]
+    // let dammy_overViewdata = ["アイウエオかきくけこ","アイウエオかきくけこ","アイウエオかきくけこ","アイウエオかきくけこ"]
     
-    
-    //    var bookData:[[String:Any]] = [] {
-    //        didSet{
-    //            api_tableView.reloadData()
-    //        }
-    //    }
-    
-//    var bookData = BookObjects()
     var bookData = [BookObject]()
     
     override func viewDidLoad() {
@@ -81,13 +73,29 @@ class SearchViewController: UIViewController,UITableViewDelegate,UITableViewData
     //　セルがタップされた時のアクション
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let storyboard:UIStoryboard =  self.storyboard!
-        let detailSearchVC = storyboard.instantiateViewController(withIdentifier: "toSearchDetailViewController") as! SearchDetailViewController
+//        let storyboard:UIStoryboard =  self.storyboard!
+//        let detailSearchVC = storyboard.instantiateViewController(withIdentifier: "toSearchDetailViewController") as! SearchDetailViewController
         
         // 値を設定
-        detailSearchVC.testValue = "test"
-        self.present(detailSearchVC, animated: true, completion: nil)
+//        detailSearchVC.bookTitleValue = "アンパンマン"
+//        detailSearchVC.authorNameValue = "山田　太郎"
+//        self.present(detailSearchVC, animated: true, completion: nil)
+        performSegue(withIdentifier: "toSearchDetailController", sender: indexPath.row)
         
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toSearchDetailController" {
+            if let detailVC = segue.destination as? SearchDetailViewController,let index = sender as? Int {
+                let bookDataItem = bookData[index]
+                
+                // 本のタイトル
+                detailVC.bookTitleValue = bookDataItem.Item.title
+                // 著者
+                detailVC.authorNameValue = bookDataItem.Item.author
+                
+            }
+        }
     }
     
     // 検索フォームの処理
@@ -182,6 +190,7 @@ struct BookObject:Codable{
 
 struct Book: Codable{
     let title:String
+    let author:String
     let mediumImageUrl:String?
     let salesDate:String
 }
