@@ -72,7 +72,6 @@ class SearchViewController: UIViewController,UITableViewDelegate,UITableViewData
     
     //　セルがタップされた時のアクション
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
 //        let storyboard:UIStoryboard =  self.storyboard!
 //        let detailSearchVC = storyboard.instantiateViewController(withIdentifier: "toSearchDetailViewController") as! SearchDetailViewController
         
@@ -80,19 +79,31 @@ class SearchViewController: UIViewController,UITableViewDelegate,UITableViewData
 //        detailSearchVC.bookTitleValue = "アンパンマン"
 //        detailSearchVC.authorNameValue = "山田　太郎"
 //        self.present(detailSearchVC, animated: true, completion: nil)
+        // セルがタップされた時にセルの選択を解除
+        tableView.deselectRow(at: indexPath, animated: true)
+        // 画面遷移する
         performSegue(withIdentifier: "toSearchDetailController", sender: indexPath.row)
         
     }
     
+    // 詳細ページへ値を受け渡すための準備
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toSearchDetailController" {
             if let detailVC = segue.destination as? SearchDetailViewController,let index = sender as? Int {
-                let bookDataItem = bookData[index]
                 
+                let bookDataItem = bookData[index]
                 // 本のタイトル
                 detailVC.bookTitleValue = bookDataItem.Item.title
                 // 著者
                 detailVC.authorNameValue = bookDataItem.Item.author
+                // 本の画像
+                detailVC.bookImageValue = bookDataItem.Item.mediumImageUrl
+                // 価格
+                detailVC.priceValue = bookDataItem.Item.itemPrice
+                // 出版社
+                detailVC.publisherValue = bookDataItem.Item.publisherName
+                // 発売日
+                detailVC.salesDateValue = bookDataItem.Item.salesDate
                 
             }
         }
@@ -193,6 +204,8 @@ struct Book: Codable{
     let author:String
     let mediumImageUrl:String?
     let salesDate:String
+    let itemPrice:Int
+    let publisherName:String
 }
 
 // 標準イニシャライザ
