@@ -31,6 +31,7 @@
 		55AAEC502824C557001EF8AA /* SearchDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55AAEC4F2824C557001EF8AA /* SearchDetailViewController.swift */; };
 		55AAEC5328250F47001EF8AA /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55AAEC5128250F47001EF8AA /* SettingTableViewCell.swift */; };
 		55AAEC5428250F47001EF8AA /* SettingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55AAEC5228250F47001EF8AA /* SettingTableViewCell.xib */; };
+		55D908172830F7CD0015586A /* SearchFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D908162830F7CD0015586A /* SearchFilterViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,6 +93,7 @@
 		55AAEC5228250F47001EF8AA /* SettingTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingTableViewCell.xib; sourceTree = "<group>"; };
 		55AAEC9228277632001EF8AA /* RealmSwift.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = RealmSwift.xcframework; path = "../realm-swift-10.25.2/13.2.1/RealmSwift.xcframework"; sourceTree = "<group>"; };
 		55AAEC9328277632001EF8AA /* Realm.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = Realm.xcframework; path = "../realm-swift-10.25.2/13.2.1/Realm.xcframework"; sourceTree = "<group>"; };
+		55D908162830F7CD0015586A /* SearchFilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFilterViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,6 +154,7 @@
 				5537A9B5282B1C850073ED97 /* BookAPI.swift */,
 				55AAEC3D28227764001EF8AA /* FavoriteViewController.swift */,
 				55AAEC4728237E52001EF8AA /* BookTableViewCell.swift */,
+				55D908162830F7CD0015586A /* SearchFilterViewController.swift */,
 				55AAEC4F2824C557001EF8AA /* SearchDetailViewController.swift */,
 				55AAEC4B2823AFB2001EF8AA /* FavoriteTableViewCell.swift */,
 				55AAEC4C2823AFB2001EF8AA /* FavoriteTableViewCell.xib */,
@@ -332,6 +335,7 @@
 				55AAEC4D2823AFB2001EF8AA /* FavoriteTableViewCell.swift in Sources */,
 				5598E818281E7401008351DD /* SettingViewController.swift in Sources */,
 				5598E814281E7401008351DD /* AppDelegate.swift in Sources */,
+				55D908172830F7CD0015586A /* SearchFilterViewController.swift in Sources */,
 				55AAEC3C2822745A001EF8AA /* TabBarViewController.swift in Sources */,
 				5598E816281E7401008351DD /* SceneDelegate.swift in Sources */,
 				55AAEC5328250F47001EF8AA /* SettingTableViewCell.swift in Sources */,

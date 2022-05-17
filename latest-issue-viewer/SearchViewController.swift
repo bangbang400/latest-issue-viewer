@@ -113,6 +113,7 @@ class SearchViewController: UIViewController,UITableViewDelegate,UITableViewData
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         // キーボードを閉じる
         view.endEditing(true)
+        
         // 検索フォームに値が入っているかチェック
         if let search_title = search_form.text {
             //            print(search_title)
@@ -121,20 +122,21 @@ class SearchViewController: UIViewController,UITableViewDelegate,UITableViewData
             //            print(getAPI(search_title).data(using: .utf8))
             //            let data: Data = getAPI(search_title).data(using: .utf8)
             //print(data)
-            getAPI(search_title)
+            getAPI(search_title, "001001")
         }
     }
     
     // APIを取得する関数
-    func getAPI(_ title:String){
+    func getAPI(_ title:String , _ booksGenreId:String){
         // urlの固定値
-        let urlFixed = "https://app.rakuten.co.jp/services/api/BooksBook/Search/20170404?format=json&title="
+        let urlFixed = "https://app.rakuten.co.jp/services/api/BooksBook/Search/20170404?format=json"
         // アプリケーションID
-        let appId = "applicationId=1009562445284140860"
+        let applicationId = "1009562445284140860"
         // URLの結合
-        let urlString:String = "\(urlFixed)\(title)&\(appId)"
+//        let urlString:String = "\(urlFixed)&title=\(title)&booksGenreId=\(booksGenreId)&applicationId=\(appId)"
+        let urlString:String = "\(urlFixed)&booksGenreId=\(booksGenreId)&applicationId=\(applicationId)"
         // let urlString = "\(urlFixed)&\(appId)"
-        //        print("文字列時のURL\(urlString)")
+        print("文字列時のURL\(urlString)")
         
         // パーセントエンコーディング
         let encodeUrlString: String = urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
