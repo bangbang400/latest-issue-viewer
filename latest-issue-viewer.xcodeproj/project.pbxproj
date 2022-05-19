@@ -32,6 +32,7 @@
 		55D9083328345ED10015586A /* SearchFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D9082D28345ED10015586A /* SearchFilterViewController.swift */; };
 		55D9083428345ED10015586A /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D9082E28345ED10015586A /* TabBarViewController.swift */; };
 		55D9083828345F0D0015586A /* BookAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D9083728345F0D0015586A /* BookAPI.swift */; };
+		55D9083A283582C70015586A /* Favorite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D90839283582C70015586A /* Favorite.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -94,6 +95,7 @@
 		55D9082D28345ED10015586A /* SearchFilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchFilterViewController.swift; sourceTree = "<group>"; };
 		55D9082E28345ED10015586A /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		55D9083728345F0D0015586A /* BookAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookAPI.swift; sourceTree = "<group>"; };
+		55D90839283582C70015586A /* Favorite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Favorite.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -240,6 +242,7 @@
 		55D9083528345EE80015586A /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				55D90839283582C70015586A /* Favorite.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -389,6 +392,7 @@
 			files = (
 				55D9082428345E8C0015586A /* BookTableViewCell.swift in Sources */,
 				55D9083828345F0D0015586A /* BookAPI.swift in Sources */,
+				55D9083A283582C70015586A /* Favorite.swift in Sources */,
 				55D9083028345ED10015586A /* SearchViewController.swift in Sources */,
 				55D9083428345ED10015586A /* TabBarViewController.swift in Sources */,
 				55D9082628345E8C0015586A /* SettingTableViewCell.swift in Sources */,

@@ -32,7 +32,7 @@ class SearchViewController: UIViewController,UITableViewDelegate,UITableViewData
     // セルの数
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return bookData.count
-//        return BookObjects.
+        //        return BookObjects.
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -42,7 +42,7 @@ class SearchViewController: UIViewController,UITableViewDelegate,UITableViewData
         // 本のタイトル
         // cell.book_title_label.text = dammy_data[indexPath.row]
         cell.book_title_label.text = bookDataItem.Item.title
-                
+        
         // 本の画像
         if let urlString = bookDataItem.Item.mediumImageUrl {
             let url = URL(string: urlString)
@@ -59,7 +59,7 @@ class SearchViewController: UIViewController,UITableViewDelegate,UITableViewData
         
         // 本の販売日
         cell.book_salesDate_textfield.text = bookDataItem.Item.salesDate
-        // cell.book_overview_textfield.text = dammy_overViewdata[indexPath.row]        
+        // cell.book_overview_textfield.text = dammy_overViewdata[indexPath.row]
         
         
         return cell
@@ -72,13 +72,13 @@ class SearchViewController: UIViewController,UITableViewDelegate,UITableViewData
     
     //　セルがタップされた時のアクション
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let storyboard:UIStoryboard =  self.storyboard!
-//        let detailSearchVC = storyboard.instantiateViewController(withIdentifier: "toSearchDetailViewController") as! SearchDetailViewController
+        //        let storyboard:UIStoryboard =  self.storyboard!
+        //        let detailSearchVC = storyboard.instantiateViewController(withIdentifier: "toSearchDetailViewController") as! SearchDetailViewController
         
         // 値を設定
-//        detailSearchVC.bookTitleValue = "アンパンマン"
-//        detailSearchVC.authorNameValue = "山田　太郎"
-//        self.present(detailSearchVC, animated: true, completion: nil)
+        //        detailSearchVC.bookTitleValue = "アンパンマン"
+        //        detailSearchVC.authorNameValue = "山田　太郎"
+        //        self.present(detailSearchVC, animated: true, completion: nil)
         // セルがタップされた時にセルの選択を解除
         tableView.deselectRow(at: indexPath, animated: true)
         // 画面遷移する
@@ -133,7 +133,7 @@ class SearchViewController: UIViewController,UITableViewDelegate,UITableViewData
         // アプリケーションID
         let applicationId = "1009562445284140860"
         // URLの結合
-//        let urlString:String = "\(urlFixed)&title=\(title)&booksGenreId=\(booksGenreId)&applicationId=\(appId)"
+        //        let urlString:String = "\(urlFixed)&title=\(title)&booksGenreId=\(booksGenreId)&applicationId=\(appId)"
         let urlString:String = "\(urlFixed)&booksGenreId=\(booksGenreId)&applicationId=\(applicationId)"
         // let urlString = "\(urlFixed)&\(appId)"
         print("文字列時のURL\(urlString)")
@@ -181,43 +181,3 @@ class SearchViewController: UIViewController,UITableViewDelegate,UITableViewData
         task.resume()
     }
 }
-
-// BookObjectsモデル
-struct BookObjects:Codable{
-    
-    let pageCount:Int
-    let page:Int
-    let hits:Int
-    let carrier:Int
-    let Items: [BookObject]
-}
-
-struct BookObject:Codable{
-//    struct Book:Codable {
-//        let titleKana:String
-//    }
-    let Item:Book
-    
-    // enum
-}
-
-struct Book: Codable{
-    let title:String
-    let author:String
-    let mediumImageUrl:String?
-    let salesDate:String
-    let itemPrice:Int
-    let publisherName:String
-}
-
-// 標準イニシャライザ
-//extension BookObjects {
-//    init(from decoder: Decoder) throws {
-//        let values = try decoder.container(keyedBy: CodingKeys.self)
-//        pageCount = try values.decode(Int.self, forKey: .pageCount)
-//        page = try values.decode(Int.self, forKey: .page)
-//        hits = try values.decode(Int.self, forKey: .hits)
-//        carrier = try values.decode(Int.self, forKey: .carrier)
-//        Items = try values.decode([BookObject].self, forKey: .Items)
-//    }
-//}
