@@ -22,6 +22,7 @@ struct BookObject:Codable{
 
 struct Book: Codable{
     let title:String
+    let isbn:String
     let author:String
     let mediumImageUrl:String?
     let salesDate:String

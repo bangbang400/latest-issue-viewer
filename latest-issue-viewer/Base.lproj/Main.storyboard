@@ -256,10 +256,12 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TKU-bZ-3SS">
                                 <rect key="frame" x="16" y="425" width="288" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemBlueColor"/>
                                 <color key="tintColor" systemColor="systemGroupedBackgroundColor"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="この本をお気に入り登録する"/>
+                                <buttonConfiguration key="configuration" style="plain"/>
+                                <connections>
+                                    <action selector="addFavoriteBook:" destination="PwB-qF-RMB" eventType="touchUpInside" id="uKi-JZ-Z0b"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="csW-Sv-06u"/>
@@ -269,6 +271,7 @@
                         <barButtonItem key="backBarButtonItem" title="戻る" id="wzg-rp-xTh"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="addStyleButton" destination="TKU-bZ-3SS" id="yfY-ic-987"/>
                         <outlet property="authorNameLabel" destination="keo-uA-1sN" id="d35-9a-iO1"/>
                         <outlet property="bookImageImageView" destination="cEw-Qs-Lwd" id="gzz-ho-AoS"/>
                         <outlet property="bookTitleLabel" destination="XrD-Yp-eEZ" id="SsA-NZ-7xh"/>
@@ -396,9 +399,6 @@
         <image name="star.fill" catalog="system" width="128" height="116"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemBlueColor">
-            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGroupedBackgroundColor">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

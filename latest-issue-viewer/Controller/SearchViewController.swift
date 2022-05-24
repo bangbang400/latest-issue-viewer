@@ -94,6 +94,8 @@ class SearchViewController: UIViewController,UITableViewDelegate,UITableViewData
                 let bookDataItem = bookData[index]
                 // 本のタイトル
                 detailVC.bookTitleValue = bookDataItem.Item.title
+                // isbn
+                detailVC.isbnValue = bookDataItem.Item.isbn
                 // 著者
                 detailVC.authorNameValue = bookDataItem.Item.author
                 // 本の画像
@@ -136,7 +138,7 @@ class SearchViewController: UIViewController,UITableViewDelegate,UITableViewData
         //        let urlString:String = "\(urlFixed)&title=\(title)&booksGenreId=\(booksGenreId)&applicationId=\(appId)"
         let urlString:String = "\(urlFixed)&booksGenreId=\(booksGenreId)&applicationId=\(applicationId)"
         // let urlString = "\(urlFixed)&\(appId)"
-        print("文字列時のURL\(urlString)")
+        // print("文字列時のURL\(urlString)")
         
         // パーセントエンコーディング
         let encodeUrlString: String = urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
@@ -160,12 +162,12 @@ class SearchViewController: UIViewController,UITableViewDelegate,UITableViewData
                 // print(jsonData)
                 // utf8にしてデータを保存する
                 let stringJsonData = String(data: data, encoding: .utf8) ?? ""
-                print(stringJsonData)
+                // print(stringJsonData)
                 
                 let dataCast: Data? = stringJsonData.data(using: .utf8)
                 
                 let json = try JSONDecoder().decode(BookObjects.self, from: dataCast!)
-                print(json)
+                // print(json)
                 
                 // self.bookTitle = BookObjects.BookObject.titleKana
                 self.bookData = json.Items
