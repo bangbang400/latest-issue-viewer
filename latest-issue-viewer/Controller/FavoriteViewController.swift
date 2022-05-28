@@ -26,14 +26,14 @@ class FavoriteViewController: UIViewController,UITableViewDelegate,UITableViewDa
 //        addDammyData()
         // Realmインスタンスの取得
         let realm = try! Realm()
-        // realmテーブル削除
-//        try! realm.write {
-//            realm.delete(realm.objects(Favorite.self))
-//        }
         // DB全件取得
         self.favoriteList = realm.objects(Favorite.self)
-        print("は〜い")
-               
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        // テーブルビューの更新
+        favorite_table_view.reloadData()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

@@ -73,93 +73,88 @@ class SearchDetailViewController: UIViewController {
     // 本をお気に入りに登録する
     @IBAction func addFavoriteBook(_ sender: Any) {
         
-        // isbnでフィルターをかけたデータ
-        filterItems = try! Realm().objects(Favorite.self).filter("isbn == %@", isbnValue)
-        print(filterItems)
-        
-        // マッチしたデータがあれば、登録する
-        if let filterData = filterItems {
-            // データがあれば
-            if filterData.count > 0 {
-                print("既にDBに登録してあります")
-            }else{
-                // データがなければ
-                // インスタンスをRealmに保存
-                do {
-                    let realm = try! Realm()
-                    // 全データの取得
-                    allItems = realm.objects(Favorite.self)
-                    // ID
-                    var insertID:Int = 1
-                    //データが未登録ならIDに1を設定
-                    if (allItems != nil && allItems!.count != 0){
-                        // IDの最大値を取得して+1した値を設定
-                        let num = allItems!.value(forKeyPath: "@max.id") as! Int
-                        insertID = num + 1
-                    }
-                    
-                    //登録するデータの作成
-                    let favorite:Favorite = Favorite(value: ["id" : insertID ,"isbn": isbnValue, "title" : bookTitleValue,"salesDate":salesDateValue,"mediumImageUrl": bookImageValue])
-                    try realm.write({ () -> Void in
-                        realm.add(favorite, update: .modified)
-                    })
-                                        
-                    // realmファイルのパスを表示
-                    print(Realm.Configuration.defaultConfiguration.fileURL!)                                        
-                    
-                }catch{
-                    print("RealmDB add error")
-                }
+        // isbnのデータがあるかどうか
+        if judgeDB() {
+            print("既にDBに登録してあります")
+            do {
+                let realm = try! Realm()
+                // isbnでフィルターをかけたデータ
+                filterItems = try! Realm().objects(Favorite.self).filter("isbn == %@", isbnValue)
+                try realm.write({
+                    //削除するデータ
+                    realm.delete(filterItems!)
+                })
+                judgeButtonStyle()
+            }catch{
+                print("RealmDB delete error")
             }
             
         }else{
-            print("error")
+            // データがなければ
+            // インスタンスをRealmに保存
+            do {
+                let realm = try! Realm()
+                // 全データの取得
+                allItems = realm.objects(Favorite.self)
+                // ID
+                var insertID:Int = 1
+                //データが未登録ならIDに1を設定
+                if (allItems != nil && allItems!.count != 0){
+                    // IDの最大値を取得して+1した値を設定
+                    let num = allItems!.value(forKeyPath: "@max.id") as! Int
+                    insertID = num + 1
+                }
+                
+                //登録するデータの作成
+                let favorite:Favorite = Favorite(value: ["id" : insertID ,"isbn": isbnValue, "title" : bookTitleValue,"salesDate":salesDateValue,"mediumImageUrl": bookImageValue])
+                try realm.write({ () -> Void in
+                    realm.add(favorite, update: .modified)
+                })
+                
+                // ボタンのスタイルを変更する
+                judgeButtonStyle()
+                
+                // realmファイルのパスを表示
+                print(Realm.Configuration.defaultConfiguration.fileURL!)
+                
+            }catch{
+                print("RealmDB add error")
+            }
         }
-        
     }
     
     // ボタンのスタイルを変更する関数
     func judgeButtonStyle(){
+        
+        // isbnのデータがあるかどうか
+        if judgeDB() {
+            // isbnとマッチしたデータの要素数が１以上なら
+            // isbnがマッチしたデータがあればボタンを赤くする
+            addStyleButton.backgroundColor = UIColor.red
+            // isbnがマッチしたデータがあればボタンテキストを変更する
+            addStyleButton.setTitle("登録済み", for: .normal)
+        }else{
+            // isbnとマッチしたデータの要素数が0なら
+            // isbnがマッチしたデータがあればボタンを赤くする
+            addStyleButton.backgroundColor = UIColor.blue
+            // isbnがマッチしたデータがあればボタンテキストを変更する
+            addStyleButton.setTitle("この本をお気に入りに登録する", for: .normal)
+        }
+    }
+    
+    // isbnがDBに存在するか判定する関数
+    func judgeDB() -> Bool {
+        
+        var judgeDataExist:Bool = false
         // isbnでフィルターをかけたデータ
         filterItems = try! Realm().objects(Favorite.self).filter("isbn == %@", isbnValue)
-//        print(filterItems)
         
         if let filterData = filterItems {
             if filterData.count > 0 {
-                // isbnとマッチしたデータの要素数が１以上なら
-                // isbnがマッチしたデータがあればボタンを赤くする
-                addStyleButton.backgroundColor = UIColor.red
-                // isbnがマッチしたデータがあればボタンテキストを変更する
-                addStyleButton.setTitle("登録済み", for: .normal)
-            }else{
-                // isbnとマッチしたデータの要素数が0なら
-                // isbnがマッチしたデータがあればボタンを赤くする
-                addStyleButton.backgroundColor = UIColor.blue
-                // isbnがマッチしたデータがあればボタンテキストを変更する
-                addStyleButton.setTitle("この本をお気に入りに登録する", for: .normal)
+                // データが存在するとき
+                judgeDataExist = true
             }
-        }else{
-            print("error")
-        }
+        }        
+        return judgeDataExist
     }
 }
-
-//            var insertID:Int = 1
-//
-//            for _ in 0..<5{
-//                //データがまだ登録されていなかったらIDに1を設定する
-//                if(allUser != nil && allUser!.count != 0){
-//                    //IDの最大値を取得して+1した値をIDにする
-//                    let num = allUser!.value(forKeyPath: "@max.ID") as! Int
-//                    insertID = num + 1
-//                }
-//
-//                //登録するデータの作成
-//                let user:UserTable = UserTable(value: ["ID" : insertID ,
-//                                                       "userName" : "user"])
-//                //データの追加
-//                try! realm.write{
-//                    realm.add(user, update: .modified)
-//                }
-//            }
-//            allUser = realm.objects(UserTable.self)
