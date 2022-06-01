@@ -25,15 +25,18 @@ class SearchDetailViewController: UIViewController {
     var publisherValue :String?
     var salesDateValue:String?
     
-    let favoriteItem = Favorite()
     var allItems:Results<Favorite>?
     var filterItems:Results<Favorite>?
+    
+    let realm = try! Realm()
+    var favoriteList:List<Favorite>!
     
     @IBOutlet weak var addStyleButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        // favoriteListの一番目にアイテムが入ってたら返す
+        favoriteList = realm.objects(FavoriteList.self).first?.favList
         //　ボタンのスタイルを変更
         judgeButtonStyle()
         // 本のタイトル
@@ -91,9 +94,9 @@ class SearchDetailViewController: UIViewController {
             
         }else{
             // データがなければ
-            // インスタンスをRealmに保存
+            var favorite = Favorite()
+            
             do {
-                let realm = try! Realm()
                 // 全データの取得
                 allItems = realm.objects(Favorite.self)
                 // ID
@@ -104,13 +107,20 @@ class SearchDetailViewController: UIViewController {
                     let num = allItems!.value(forKeyPath: "@max.id") as! Int
                     insertID = num + 1
                 }
-                
                 //登録するデータの作成
-                let favorite:Favorite = Favorite(value: ["id" : insertID ,"isbn": isbnValue, "title" : bookTitleValue,"salesDate":salesDateValue,"mediumImageUrl": bookImageValue])
-                try realm.write({ () -> Void in
-                    realm.add(favorite, update: .modified)
-                })
+                favorite = Favorite(value: ["id" : insertID ,"isbn": isbnValue, "title" : bookTitleValue,"salesDate":salesDateValue,"mediumImageUrl": bookImageValue])
                 
+                try realm.write({ () -> Void in
+                    if self.favoriteList == nil {
+                        let favoriteItemList = FavoriteList()
+                        favoriteItemList.favList.append(favorite)
+                        self.realm.add(favoriteItemList)
+                        self.favoriteList = self.realm.objects(FavoriteList.self).first?.favList
+                    }else{
+                        favoriteList.append(favorite)
+                    }
+                    //realm.add(favorite, update: .modified)
+                })
                 // ボタンのスタイルを変更する
                 judgeButtonStyle()
                 

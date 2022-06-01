@@ -25,7 +25,7 @@ class SearchViewController: UIViewController,UITableViewDelegate,UITableViewData
         api_tableView.register(UINib(nibName: "BookTableViewCell", bundle: nil),forCellReuseIdentifier:"bookTableView")
         
         // SearchBarで起きたイベントをこのクラスで受け取り、処理できるようになる
-        search_form.delegate = self
+        search_form.delegate = self                
         
     }
     

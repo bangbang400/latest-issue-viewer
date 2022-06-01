@@ -20,3 +20,7 @@ class Favorite:Object {
         return "id"
     }
 }
+
+class FavoriteList: Object {
+    let favList = List<Favorite>()
+}
