@@ -108,26 +108,31 @@ class FavoriteViewController: UIViewController,UITableViewDelegate,UITableViewDa
     
     //並び替え時の処理
     func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-        //let item = favoriteList[fromIndexPath.row]
-//        let item = favList[fromIndexPath.row]
-//        // fromIndexPath.rowは移動する前のセル
-//        favList.remove(at: fromIndexPath.row)
-//        // to.rowは移動した後のセル
-//        favList.insert(item, at: to.row)
-        //print(languages)
+        try! realm.write{
+            let favoriteItem = favoriteList[fromIndexPath.row]
+            // fromIndexPath.rowは移動する前のセル
+            favoriteList.remove(at: fromIndexPath.row)
+            // to.rowは移動した後のセル
+            favoriteList.insert(favoriteItem, at: to.row)
+        }
     }
 
     //並び替えを可能にする
     func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
         return true
     }
-    
-//    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-//        if editingStyle == .delete {
-//            favoriteList.remove(at: indexPath.row)
-//            tableView.deleteRows(at: [indexPath], with: .fade)
-//        }
-//    }
+
+    //リストを削除する
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            try! realm.write{
+                // realmDBの削除操作
+                let favoriteItem = favoriteList[indexPath.row]
+                realm.delete(favoriteItem)
+            }
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        }
+    }
     
 //    func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
 //        let language = languages[fromIndexPath.row]
