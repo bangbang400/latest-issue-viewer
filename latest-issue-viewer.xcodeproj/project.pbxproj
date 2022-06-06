@@ -11,6 +11,7 @@
 		55146C8F2848B9D400AFF028 /* Realm.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 55146C882848B9A900AFF028 /* Realm.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		55146C902848B9D400AFF028 /* RealmSwift.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55146C892848B9A900AFF028 /* RealmSwift.xcframework */; };
 		55146C912848B9D400AFF028 /* RealmSwift.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 55146C892848B9A900AFF028 /* RealmSwift.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		558411F5284DFF34002DB534 /* SettingDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558411F4284DFF34002DB534 /* SettingDetailViewController.swift */; };
 		5598E814281E7401008351DD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5598E813281E7401008351DD /* AppDelegate.swift */; };
 		5598E816281E7401008351DD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5598E815281E7401008351DD /* SceneDelegate.swift */; };
 		5598E81B281E7401008351DD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5598E819281E7401008351DD /* Main.storyboard */; };
@@ -70,6 +71,7 @@
 /* Begin PBXFileReference section */
 		55146C882848B9A900AFF028 /* Realm.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = Realm.xcframework; path = "../../../Downloads/realm-swift-10.27.0/13.4/Realm.xcframework"; sourceTree = "<group>"; };
 		55146C892848B9A900AFF028 /* RealmSwift.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = RealmSwift.xcframework; path = "../../../Downloads/realm-swift-10.27.0/13.4/RealmSwift.xcframework"; sourceTree = "<group>"; };
+		558411F4284DFF34002DB534 /* SettingDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingDetailViewController.swift; sourceTree = "<group>"; };
 		5598E810281E7401008351DD /* latest-issue-viewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "latest-issue-viewer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5598E813281E7401008351DD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5598E815281E7401008351DD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -234,6 +236,7 @@
 			isa = PBXGroup;
 			children = (
 				55D9082928345ED10015586A /* SettingViewController.swift */,
+				558411F4284DFF34002DB534 /* SettingDetailViewController.swift */,
 				55D9082A28345ED10015586A /* SearchViewController.swift */,
 				55D9082B28345ED10015586A /* SearchDetailViewController.swift */,
 				55D9082C28345ED10015586A /* FavoriteViewController.swift */,
@@ -404,6 +407,7 @@
 				55D9083328345ED10015586A /* SearchFilterViewController.swift in Sources */,
 				55D9083228345ED10015586A /* FavoriteViewController.swift in Sources */,
 				55D9082328345E8C0015586A /* FavoriteTableViewCell.swift in Sources */,
+				558411F5284DFF34002DB534 /* SettingDetailViewController.swift in Sources */,
 				5598E816281E7401008351DD /* SceneDelegate.swift in Sources */,
 				55D9083128345ED10015586A /* SearchDetailViewController.swift in Sources */,
 				55D9082F28345ED10015586A /* SettingViewController.swift in Sources */,
