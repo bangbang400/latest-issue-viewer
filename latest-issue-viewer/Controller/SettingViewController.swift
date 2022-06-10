@@ -11,6 +11,8 @@ class SettingViewController: UIViewController,UITableViewDelegate,UITableViewDat
     
     @IBOutlet weak var setting_tableView: UITableView!
     
+    let countDateList:[String] = ["当日","1日前","2日前","3日前","4日前","5日前","6日前","7日前"]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -23,9 +25,10 @@ class SettingViewController: UIViewController,UITableViewDelegate,UITableViewDat
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        notificationAction()
+//        notificationAction()
+        setting_tableView.reloadData()
     }
-    
+        
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
@@ -33,6 +36,10 @@ class SettingViewController: UIViewController,UITableViewDelegate,UITableViewDat
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "settingTableView", for: indexPath) as! SettingTableViewCell
+        
+        // UserDefaultsの参照
+        let notifiDate = UserDefaults.standard.object(forKey: "notifiDate") as? Int ?? 1
+        cell.settingNotifiDateLabel.text = String(countDateList[notifiDate])
         
         return cell
     }
@@ -42,23 +49,12 @@ class SettingViewController: UIViewController,UITableViewDelegate,UITableViewDat
         tableView.deselectRow(at: indexPath, animated: true)
         // 画面遷移する
         performSegue(withIdentifier: "toSettingDetailController", sender: indexPath.row)
-    }
+    }        
     
-    func notificationAction(){
-        let content = UNMutableNotificationContent()
-        content.title = "新刊発売日まであと何日です"
-        content.body = "急いで買いに行きましょう！！"
-        
-        // 画像を設定する
-        // content.イメージ
-        
-        // 音を変更する
-        //        content.sound = UNNotificationSound.init(named: UNNotificationSoundName(rawValue: "sound.mp3"))
-        // デフォルトサウンド
-        content.sound = UNNotificationSound.default
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 3, repeats: false)
-        let request = UNNotificationRequest(identifier: "notification", content: content, trigger: trigger)
-        UNUserNotificationCenter.current().add(request)
+    // 値を渡す準備
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let setDetailVC = segue.destination as! SettingDetailViewController
+        setDetailVC.countDateList = self.countDateList
     }
     
 }

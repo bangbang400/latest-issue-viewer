@@ -9,13 +9,20 @@ import UIKit
 class SettingTableViewCell: UITableViewCell {
 
     @IBOutlet weak var releaseNotificationSwitch: UISwitch!
-    @IBOutlet weak var releaseNotificationLabel: UILabel!
+    @IBOutlet weak var settingNotifiDateLabel: UILabel!
+    
+    //
+    var datePickerListValue:[String]?    
+    
+    // 通知日を設定
+    var setNotifiDateValue:Int?
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         //releaseNotificationSwitch.isEnabled = false
-        
+        // 設定した発売日を表示する
+        settingNotifiDateLabel.text = String(setNotifiDateValue ?? 1)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

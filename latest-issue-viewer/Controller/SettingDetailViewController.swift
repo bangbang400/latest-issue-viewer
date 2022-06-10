@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class SettingDetailViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDataSource {
     
@@ -13,7 +14,16 @@ class SettingDetailViewController: UIViewController,UIPickerViewDelegate,UIPicke
     @IBOutlet weak var countDateLabel: UILabel!
     @IBOutlet weak var settingButton: UIButton!
     
-    let countDateList:[String] = ["当日に通知","1日前","2日前","3日前","4日前","5日前","6日前","7日前"]
+    var countDatePickerRow: Int = 0
+    var countDateList:[String]!
+    
+    // Realmインスタンスを取得
+    let realm = try! Realm()
+    // Dictionaryを宣言
+    //    var dictionaryDate:[Int:String] = [:]
+    // 通知するデータを保存する
+    var notificationDataObj:Results<Favorite>!
+    var notificationDataList:List<Favorite>!
     
     // 発売日通知日をUserDefaultsで保存する
     let countDateUD = UserDefaults.standard
@@ -22,13 +32,29 @@ class SettingDetailViewController: UIViewController,UIPickerViewDelegate,UIPicke
         super.viewDidLoad()
         countDatePicker.dataSource = self
         countDatePicker.delegate = self
+        //　通知用リスト
+        notificationDataList = realm.objects(FavoriteList.self).first?.notifiList
         // ラベル
         countDateLabel.text = "新刊発売の通知日を設定"
         // ボタンのデザイン
         settingButton.backgroundColor = UIColor.blue
         settingButton.setTitle("設定する", for: .normal)
-        // pickerの初期値
+        
+        //        // UserDefaultsの保存
+        //        for (index,country) in countDateList.enumerated() {
+        //            //print(index,country)
+        //            // Dictionaryを更新
+        ////            dictionaryDate.updateValue(country, forKey: index)
+        //        }
+        
+        // UserDefaultsの参照
         let notifiDate = countDateUD.object(forKey: "notifiDate") as? Int ?? 1
+        
+        // Retrieve
+        //        if let userInfo = UserDefaults.standard.dictionary(forKey: "UserInfo") {
+        //            print(userInfo) // ["Gender": M, "Age": 15, "Name": Suzuki]
+        //        }
+        // pickerの初期値
         countDatePicker.selectRow(notifiDate, inComponent: 0, animated: false)
     }
     
@@ -51,10 +77,25 @@ class SettingDetailViewController: UIViewController,UIPickerViewDelegate,UIPicke
     }
     // ドラムロールの選択時
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        countDateUD.set(row, forKey: "notifiDate")
+        //        countDateUD.set(row, forKey: "notifiDate")
+        // ドラムロールの行番号を設定する
+        countDatePickerRow = row
     }
     // ドラムロールの行の高さ
     func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
         return 50
+    }
+    
+    //　設定ボタンを押下した際の挙動
+    @IBAction func settingButtonAction(_ sender: Any) {
+        // UserDefaultsに保存する
+        //        countDateUD.set(dictionaryDate, forKey: "notifiDate")
+        countDateUD.set(countDatePickerRow, forKey: "notifiDate")
+        // 新刊発売日を設定すべきリストを取得
+        Notification().getNotificationData()
+        // ローカルプッシュ通知を設定する
+        Notification().notificationAction(countDatePickerRow)
+        // 戻る NavigationControllerの管理下にある場合
+        self.navigationController?.popViewController(animated: true)
     }
 }

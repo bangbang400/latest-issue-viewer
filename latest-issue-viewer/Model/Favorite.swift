@@ -23,4 +23,5 @@ class Favorite:Object {
 
 class FavoriteList: Object {
     let favList = List<Favorite>()
+    let notifiList = List<Favorite>()
 }

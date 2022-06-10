@@ -30,7 +30,7 @@
                             <action selector="releaseNotifcationSwitchAction:" destination="KGk-i7-Jjw" eventType="valueChanged" id="rOq-j2-eeR"/>
                         </connections>
                     </switch>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Wc-Rt-o9g">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Wc-Rt-o9g">
                         <rect key="frame" x="179" y="12" width="68" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -41,8 +41,8 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="releaseNotificationLabel" destination="8Wc-Rt-o9g" id="bcV-q1-asJ"/>
                 <outlet property="releaseNotificationSwitch" destination="qYa-g6-ivg" id="Pky-h8-RYV"/>
+                <outlet property="settingNotifiDateLabel" destination="8Wc-Rt-o9g" id="Gtp-81-9ls"/>
             </connections>
             <point key="canvasLocation" x="131.8840579710145" y="129.91071428571428"/>
         </tableViewCell>

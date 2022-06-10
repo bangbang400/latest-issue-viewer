@@ -53,6 +53,9 @@
                                 <color key="tintColor" systemColor="systemGroupedBackgroundColor"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                <connections>
+                                    <action selector="settingButtonAction:" destination="l6N-9z-H91" eventType="touchUpInside" id="3pi-on-nlQ"/>
+                                </connections>
                             </button>
                             <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bFn-09-vWu">
                                 <rect key="frame" x="0.0" y="192" width="320" height="162"/>

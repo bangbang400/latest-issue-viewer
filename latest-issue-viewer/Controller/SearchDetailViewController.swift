@@ -121,6 +121,13 @@ class SearchDetailViewController: UIViewController {
                     }
                     //realm.add(favorite, update: .modified)
                 })
+                
+                // 新刊発売日を設定すべきリストを取得
+                Notification().getNotificationData()
+                // UserDefaultsの参照
+                let notifiDate = UserDefaults.standard.object(forKey: "notifiDate") as? Int ?? 1
+                // ローカルプッシュ通知を設定する
+                Notification().notificationAction(notifiDate)
                 // ボタンのスタイルを変更する
                 judgeButtonStyle()
                 
