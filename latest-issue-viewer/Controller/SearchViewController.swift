@@ -12,36 +12,40 @@ class SearchViewController: UIViewController,UITableViewDelegate,UITableViewData
     
     @IBOutlet weak var search_form: UISearchBar!
     @IBOutlet weak var api_tableView: UITableView!
+    @IBOutlet weak var genreButton: UIButton!
     
     // let dammy_data = ["Apple","Banana","Grape","Pinapple"]
     // let dammy_overViewdata = ["アイウエオかきくけこ","アイウエオかきくけこ","アイウエオかきくけこ","アイウエオかきくけこ"]
     
     var bookData = [BookObject]()
-    
+    var genreId:String?
+            
     override func viewDidLoad() {
         super.viewDidLoad()
+        // カレンダーボタンの調整
+//        genreButton.imageView?.contentMode = .scaleAspectFill
+//        genreButton.contentHorizontalAlignment = .fill
+//        genreButton.contentVerticalAlignment = .fill
         // カスタムセルの登録
         api_tableView.register(UINib(nibName: "BookTableViewCell", bundle: nil),forCellReuseIdentifier:"bookTableView")
-        
         // SearchBarで起きたイベントをこのクラスで受け取り、処理できるようになる
-        search_form.delegate = self                
-        
+        search_form.delegate = self
+        // タップイベントを管理する
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector (dismissKeyboard))
+        view.addGestureRecognizer(tapGesture)
+        tapGesture.cancelsTouchesInView = false                
     }
-    
     // セルの数
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return bookData.count
         //        return BookObjects.
     }
-    
+    // セルに表示させる内容を設定
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "bookTableView", for: indexPath) as! BookTableViewCell
         let bookDataItem = bookData[indexPath.row]
-        
         // 本のタイトル
-        // cell.book_title_label.text = dammy_data[indexPath.row]
         cell.book_title_label.text = bookDataItem.Item.title
-        
         // 本の画像
         if let urlString = bookDataItem.Item.mediumImageUrl {
             let url = URL(string: urlString)
@@ -55,36 +59,21 @@ class SearchViewController: UIViewController,UITableViewDelegate,UITableViewData
         } else {
             cell.book_image_imageView.image = UIImage(named: "dog2") //nilの場合は固定画像表示
         }
-        
         // 本の販売日
         cell.book_salesDate_textfield.text = bookDataItem.Item.salesDate
-        // cell.book_overview_textfield.text = dammy_overViewdata[indexPath.row]
-        
-        
         return cell
     }
-    
     // セルの高さ
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
     }
-    
     //　セルがタップされた時のアクション
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //        let storyboard:UIStoryboard =  self.storyboard!
-        //        let detailSearchVC = storyboard.instantiateViewController(withIdentifier: "toSearchDetailViewController") as! SearchDetailViewController
-        
-        // 値を設定
-        //        detailSearchVC.bookTitleValue = "アンパンマン"
-        //        detailSearchVC.authorNameValue = "山田　太郎"
-        //        self.present(detailSearchVC, animated: true, completion: nil)
         // セルがタップされた時にセルの選択を解除
         tableView.deselectRow(at: indexPath, animated: true)
         // 画面遷移する
         performSegue(withIdentifier: "toSearchDetailController", sender: indexPath.row)
-        
     }
-    
     // 詳細ページへ値を受け渡すための準備
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toSearchDetailController" {
@@ -109,45 +98,60 @@ class SearchViewController: UIViewController,UITableViewDelegate,UITableViewData
             }
         }
     }
-    
+    // キーボードを閉じる
+//    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+////        view.endEditing(true)
+////        search_form.resignFirstResponder()
+//        view.endEditing(true)
+//        print("タッチされたよ")
+//    }
+//    @IBAction func unwind(_ segue: UIStoryboardSegue) {
+//        let from = segue.source as! SearchFilterViewController
+//        self.genreId = from.genreId ?? "aaa"
+//        print(self.genreId)
+//        print(segue.identifier!)
+//        search_form.placeholder = self.genreId
+//    }
+    // キーボードを閉じる
+    @objc public func dismissKeyboard() {
+        view.endEditing(true)
+    }
     // 検索フォームの処理
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         // キーボードを閉じる
         view.endEditing(true)
-        
         // 検索フォームに値が入っているかチェック
         if let search_title = search_form.text {
-            //            print(search_title)
-            //            let testData = getAPI(search_title)
-            //            print(testData)
-            //            print(getAPI(search_title).data(using: .utf8))
-            //            let data: Data = getAPI(search_title).data(using: .utf8)
-            //print(data)
             getAPI(search_title, "001001")
+        }else{
+            getAPI("", "001001")
         }
     }
-    
     // APIを取得する関数
     func getAPI(_ title:String , _ booksGenreId:String){
         // urlの固定値
         let urlFixed = "https://app.rakuten.co.jp/services/api/BooksBook/Search/20170404?format=json"
+        
+        var fixedTitle:String
+        // 本のタイトル
+        if title != "" {
+            // 本のタイトルがあった場合
+            fixedTitle = urlFixed + "&title=\(title)"
+        }else {
+            // 本のタイトルがなかった場合
+            fixedTitle = urlFixed
+        }
         // アプリケーションID
         let applicationId = "1009562445284140860"
         // URLの結合
-        //        let urlString:String = "\(urlFixed)&title=\(title)&booksGenreId=\(booksGenreId)&applicationId=\(appId)"
-        let urlString:String = "\(urlFixed)&booksGenreId=\(booksGenreId)&applicationId=\(applicationId)"
-        // let urlString = "\(urlFixed)&\(appId)"
-        // print("文字列時のURL\(urlString)")
-        
+        let urlString:String = "\(fixedTitle)&booksGenreId=\(booksGenreId)&applicationId=\(applicationId)"
+         print("文字列時のURL\(urlString)")
         // パーセントエンコーディング
         let encodeUrlString: String = urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
-        //        print("パーセントエンコーディング時のURL\(encodeUrlString)")
-        
         // URLを生成
         let url = URL(string: encodeUrlString)
         // requestを生成
         let request = URLRequest(url: url!)
-        
         // URLをもとにAPIを取得する(非同期で通信)
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
             // データがないときはreturn
@@ -162,23 +166,19 @@ class SearchViewController: UIViewController,UITableViewDelegate,UITableViewData
                 // utf8にしてデータを保存する
                 let stringJsonData = String(data: data, encoding: .utf8) ?? ""
                 // print(stringJsonData)
-                
                 let dataCast: Data? = stringJsonData.data(using: .utf8)
-                
                 let json = try JSONDecoder().decode(BookObjects.self, from: dataCast!)
                 // print(json)
-                
-                // self.bookTitle = BookObjects.BookObject.titleKana
                 self.bookData = json.Items
+                // テーブルのリロードはメインスレッドで行うようにする
                 DispatchQueue.main.async() { () -> Void in
                     self.api_tableView.reloadData()
                 }
-                
             } catch let error {
-                print(error)
-                print("api取得エラー")
+                print("ブック検索APIからの取得に失敗\(error)")
             }
         }
         task.resume()
     }
+    
 }

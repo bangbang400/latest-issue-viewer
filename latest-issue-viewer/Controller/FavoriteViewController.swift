@@ -25,7 +25,9 @@ class FavoriteViewController: UIViewController,UITableViewDelegate,UITableViewDa
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // favoriteListの一番目にアイテムが入ってたら返す
         favoriteList = realm.objects(FavoriteList.self).first?.favList
+                
         // テーブルの登録
         favorite_table_view.register(UINib(nibName: "FavoriteTableViewCell", bundle: nil), forCellReuseIdentifier: "favoriteTableView")
         // Realmにダミーデータを追加
@@ -36,7 +38,6 @@ class FavoriteViewController: UIViewController,UITableViewDelegate,UITableViewDa
 //        favList = realm.objects(FavoriteItemList.self).first?.favList
 //        favList = realm.objects(Favorite.self)
 //        print(favList)
-
         // ナビゲーションバーの設定
         navigationItem.rightBarButtonItem = editButtonItem
     }
@@ -62,6 +63,7 @@ class FavoriteViewController: UIViewController,UITableViewDelegate,UITableViewDa
         //print(favoriteList?[indexPath.row])
         
         if let favoriteItem = favoriteList?[indexPath.row] {
+            print(favoriteItem.title)
             // 本のタイトル
             cell.favoriteTitle_label.text = favoriteItem.title
             // 本の発売日
@@ -116,12 +118,10 @@ class FavoriteViewController: UIViewController,UITableViewDelegate,UITableViewDa
             favoriteList.insert(favoriteItem, at: to.row)
         }
     }
-
     //並び替えを可能にする
     func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
         return true
     }
-
     //リストを削除する
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {

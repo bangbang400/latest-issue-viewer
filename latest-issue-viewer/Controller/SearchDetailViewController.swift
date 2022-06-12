@@ -139,10 +139,8 @@ class SearchDetailViewController: UIViewController {
             }
         }
     }
-    
     // ボタンのスタイルを変更する関数
     func judgeButtonStyle(){
-        
         // isbnのデータがあるかどうか
         if judgeDB() {
             // isbnとマッチしたデータの要素数が１以上なら
@@ -157,8 +155,7 @@ class SearchDetailViewController: UIViewController {
             // isbnがマッチしたデータがあればボタンテキストを変更する
             addStyleButton.setTitle("この本をお気に入りに登録する", for: .normal)
         }
-    }
-    
+    }    
     // isbnがDBに存在するか判定する関数
     func judgeDB() -> Bool {
         
