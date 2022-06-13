@@ -42,15 +42,13 @@ class SettingViewController: UIViewController,UITableViewDelegate,UITableViewDat
         cell.settingNotifiDateLabel.text = String(countDateList[notifiDate])
         
         return cell
-    }
-    
+    }    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // セルがタップされた時にセルの選択を解除
         tableView.deselectRow(at: indexPath, animated: true)
         // 画面遷移する
         performSegue(withIdentifier: "toSettingDetailController", sender: indexPath.row)
-    }        
-    
+    }
     // 値を渡す準備
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let setDetailVC = segue.destination as! SettingDetailViewController

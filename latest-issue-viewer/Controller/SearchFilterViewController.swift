@@ -51,6 +51,9 @@ class SearchFilterViewController: UIViewController,UITableViewDelegate,UITableVi
             genreId = item.booksGenreId
             // ジャンル名を設定する
             genreName = item.booksGenreName
+            // ジャンルを設定して検索する
+//            let searchVC =
+//            SearchViewController.getAPI("",genreId)
         }
         // タブコントローラー
         let preTC = self.presentingViewController as! UITabBarController

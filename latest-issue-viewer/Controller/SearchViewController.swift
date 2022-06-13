@@ -13,10 +13,13 @@ class SearchViewController: UIViewController,UITableViewDelegate,UITableViewData
     @IBOutlet weak var search_form: UISearchBar!
     @IBOutlet weak var api_tableView: UITableView!
     @IBOutlet weak var genreButton: UIButton!
+    @IBOutlet weak var clearButton: UIButton!
     
+    // API検索をインスタンス変数に持つ
+//    let getBookApi = GetBookAPI()
     // let dammy_data = ["Apple","Banana","Grape","Pinapple"]
     // let dammy_overViewdata = ["アイウエオかきくけこ","アイウエオかきくけこ","アイウエオかきくけこ","アイウエオかきくけこ"]
-    
+    // ブックデータ
     var bookData = [BookObject]()
     var genreId:String?
             
@@ -112,6 +115,12 @@ class SearchViewController: UIViewController,UITableViewDelegate,UITableViewData
 //        print(segue.identifier!)
 //        search_form.placeholder = self.genreId
 //    }
+    // フィルター解除ボタン
+    @IBAction func clearButtonAction(_ sender: Any) {
+        // 設定されているフィルターを解除する
+        genreId = ""
+        search_form.placeholder = "本のタイトルを入力"
+    }
     // キーボードを閉じる
     @objc public func dismissKeyboard() {
         view.endEditing(true)
@@ -122,9 +131,21 @@ class SearchViewController: UIViewController,UITableViewDelegate,UITableViewData
         view.endEditing(true)
         // 検索フォームに値が入っているかチェック
         if let search_title = search_form.text {
-            getAPI(search_title, "001001")
+            // ジャンル選択中かどうかチェック
+            if let genreId = genreId {
+                getAPI(search_title, genreId)
+            }else{
+                // タイトルのみを設定
+                getAPI(search_title, "")
+            }
         }else{
-            getAPI("", "001001")
+            // ジャンル選択中かどうかチェック
+            if let genreId = genreId {
+                getAPI("", genreId)
+            }else{
+                // 空白を設定
+                getAPI("", "")
+            }
         }
     }
     // APIを取得する関数
@@ -133,18 +154,32 @@ class SearchViewController: UIViewController,UITableViewDelegate,UITableViewData
         let urlFixed = "https://app.rakuten.co.jp/services/api/BooksBook/Search/20170404?format=json"
         
         var fixedTitle:String
-        // 本のタイトル
+        var fixedGenreId:String
+        
+        // タイトルとジャンルの引数チェック
         if title != "" {
-            // 本のタイトルがあった場合
-            fixedTitle = urlFixed + "&title=\(title)"
+            // タイトルが設定されている
+            if booksGenreId != ""{
+                // ジャンルが設定されている
+                fixedTitle = urlFixed + "&title=\(title)" + "&booksGenreId=\(booksGenreId)"
+            }else{
+                // タイトルだけ設定されている
+                fixedTitle = urlFixed + "&title=\(title)"
+            }
         }else {
-            // 本のタイトルがなかった場合
-            fixedTitle = urlFixed
+            // タイトルが設定されていない
+            if booksGenreId != ""{
+                // ジャンルが設定されている
+                fixedTitle = urlFixed + "&booksGenreId=\(booksGenreId)"
+            }else{
+                // タイトルもジャンルもなしの場合
+                fixedTitle = urlFixed
+            }
         }
         // アプリケーションID
         let applicationId = "1009562445284140860"
         // URLの結合
-        let urlString:String = "\(fixedTitle)&booksGenreId=\(booksGenreId)&applicationId=\(applicationId)"
+        let urlString:String = "\(fixedTitle)&applicationId=\(applicationId)"
          print("文字列時のURL\(urlString)")
         // パーセントエンコーディング
         let encodeUrlString: String = urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
@@ -180,5 +215,5 @@ class SearchViewController: UIViewController,UITableViewDelegate,UITableViewData
         }
         task.resume()
     }
-    
+
 }
