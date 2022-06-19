@@ -8,13 +8,13 @@
 //
 import UIKit
 
-class SearchViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,UISearchBarDelegate {
+class SearchViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,UISearchBarDelegate,BookApiDelegate {
     
     @IBOutlet weak var search_form: UISearchBar!
     @IBOutlet weak var api_tableView: UITableView!
     @IBOutlet weak var genreButton: UIButton!
     @IBOutlet weak var clearButton: UIButton!
-    
+    @IBOutlet weak var calendarButton: UIButton!
     // API検索をインスタンス変数に持つ
 //    let getBookApi = GetBookAPI()
     // let dammy_data = ["Apple","Banana","Grape","Pinapple"]
@@ -36,7 +36,10 @@ class SearchViewController: UIViewController,UITableViewDelegate,UITableViewData
         // タップイベントを管理する
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector (dismissKeyboard))
         view.addGestureRecognizer(tapGesture)
-        tapGesture.cancelsTouchesInView = false                
+        tapGesture.cancelsTouchesInView = false                                
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        self.api_tableView.reloadData()
     }
     // セルの数
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -150,11 +153,21 @@ class SearchViewController: UIViewController,UITableViewDelegate,UITableViewData
     }
     // APIを取得する関数
     func getAPI(_ title:String , _ booksGenreId:String){
+        print(title)
         // urlの固定値
         let urlFixed = "https://app.rakuten.co.jp/services/api/BooksBook/Search/20170404?format=json"
         
         var fixedTitle:String
         var fixedGenreId:String
+        
+        // 日付変更フォーマッターを生成
+        let dateFormatter:DateFormatter = DateFormatter()
+        // フォーマッターにカレンダー表記を設定
+        dateFormatter.calendar = Calendar(identifier: .gregorian)
+        // フォーマッターに引数から取得した任意のフォーマットを設定
+        dateFormatter.dateFormat = "yyyyMMdd"
+        // 日付
+        var filterDate:String = "2022/06/23"
         
         // タイトルとジャンルの引数チェック
         if title != "" {
@@ -176,6 +189,8 @@ class SearchViewController: UIViewController,UITableViewDelegate,UITableViewData
                 fixedTitle = urlFixed
             }
         }
+        
+        
         // アプリケーションID
         let applicationId = "1009562445284140860"
         // URLの結合
@@ -215,5 +230,5 @@ class SearchViewController: UIViewController,UITableViewDelegate,UITableViewData
         }
         task.resume()
     }
-
+    
 }

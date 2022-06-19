@@ -76,7 +76,7 @@ class SearchFilterViewController: UIViewController,UITableViewDelegate,UITableVi
 //        searchVC.search_form.placeholder = genreId
 //        let vc = self.presentingViewController as! SearchViewController
 //        vc.search_form.placeholder = "テスト"
-    }
+    }    
     // ジャンルAPIからジャンルリストを取得
     func getGenreAPI(){
         // URLの固定値
