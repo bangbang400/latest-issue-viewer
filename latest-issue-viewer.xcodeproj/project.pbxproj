@@ -12,9 +12,9 @@
 		55146C8F2848B9D400AFF028 /* Realm.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 55146C882848B9A900AFF028 /* Realm.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		55146C902848B9D400AFF028 /* RealmSwift.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55146C892848B9A900AFF028 /* RealmSwift.xcframework */; };
 		55146C912848B9D400AFF028 /* RealmSwift.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 55146C892848B9A900AFF028 /* RealmSwift.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		554247D9286A08DB002E3091 /* UIColorHex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554247D8286A08DB002E3091 /* UIColorHex.swift */; };
 		5563419D2852154600066FC6 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5563419C2852154600066FC6 /* Notification.swift */; };
 		556341A12855A02900066FC6 /* GenreAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 556341A02855A02900066FC6 /* GenreAPI.swift */; };
-		556341A6285745E400066FC6 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 556341A5285745E400066FC6 /* CalendarView.swift */; };
 		556341A828574A8700066FC6 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 556341A728574A8700066FC6 /* CalendarViewController.swift */; };
 		558411F5284DFF34002DB534 /* SettingDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558411F4284DFF34002DB534 /* SettingDetailViewController.swift */; };
 		5598E814281E7401008351DD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5598E813281E7401008351DD /* AppDelegate.swift */; };
@@ -80,9 +80,9 @@
 		3C5423034DAB2FDBD1C6D9A9 /* Pods_latest_issue_viewer_latest_issue_viewerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_latest_issue_viewer_latest_issue_viewerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		55146C882848B9A900AFF028 /* Realm.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = Realm.xcframework; path = "../../../Downloads/realm-swift-10.27.0/13.4/Realm.xcframework"; sourceTree = "<group>"; };
 		55146C892848B9A900AFF028 /* RealmSwift.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = RealmSwift.xcframework; path = "../../../Downloads/realm-swift-10.27.0/13.4/RealmSwift.xcframework"; sourceTree = "<group>"; };
+		554247D8286A08DB002E3091 /* UIColorHex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorHex.swift; sourceTree = "<group>"; };
 		5563419C2852154600066FC6 /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		556341A02855A02900066FC6 /* GenreAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreAPI.swift; sourceTree = "<group>"; };
-		556341A5285745E400066FC6 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		556341A728574A8700066FC6 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		558411F4284DFF34002DB534 /* SettingDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingDetailViewController.swift; sourceTree = "<group>"; };
 		5598E810281E7401008351DD /* latest-issue-viewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "latest-issue-viewer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -156,16 +156,9 @@
 			isa = PBXGroup;
 			children = (
 				5563419C2852154600066FC6 /* Notification.swift */,
+				554247D8286A08DB002E3091 /* UIColorHex.swift */,
 			);
 			path = Sorce;
-			sourceTree = "<group>";
-		};
-		556341A42857459A00066FC6 /* Framework */ = {
-			isa = PBXGroup;
-			children = (
-				556341A5285745E400066FC6 /* CalendarView.swift */,
-			);
-			path = Framework;
 			sourceTree = "<group>";
 		};
 		5598E807281E7401008351DD = {
@@ -193,7 +186,6 @@
 		5598E812281E7401008351DD /* latest-issue-viewer */ = {
 			isa = PBXGroup;
 			children = (
-				556341A42857459A00066FC6 /* Framework */,
 				5563419B2852152700066FC6 /* Sorce */,
 				55D9082828345ED10015586A /* Controller */,
 				55D9083528345EE80015586A /* Model */,
@@ -568,13 +560,13 @@
 				55D9082428345E8C0015586A /* BookTableViewCell.swift in Sources */,
 				55D9083828345F0D0015586A /* BookAPI.swift in Sources */,
 				55D9083A283582C70015586A /* Favorite.swift in Sources */,
-				556341A6285745E400066FC6 /* CalendarView.swift in Sources */,
 				55D9083028345ED10015586A /* SearchViewController.swift in Sources */,
 				55D9083428345ED10015586A /* TabBarViewController.swift in Sources */,
 				556341A828574A8700066FC6 /* CalendarViewController.swift in Sources */,
 				55D9082628345E8C0015586A /* SettingTableViewCell.swift in Sources */,
 				5598E814281E7401008351DD /* AppDelegate.swift in Sources */,
 				556341A12855A02900066FC6 /* GenreAPI.swift in Sources */,
+				554247D9286A08DB002E3091 /* UIColorHex.swift in Sources */,
 				55D9083328345ED10015586A /* SearchFilterViewController.swift in Sources */,
 				55D9083228345ED10015586A /* FavoriteViewController.swift in Sources */,
 				55D9082328345E8C0015586A /* FavoriteTableViewCell.swift in Sources */,
@@ -765,6 +757,7 @@
 				DEVELOPMENT_TEAM = 5LPP78W3R7;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "latest-issue-viewer/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "The latest issue";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -794,6 +787,7 @@
 				DEVELOPMENT_TEAM = 5LPP78W3R7;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "latest-issue-viewer/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "The latest issue";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;

@@ -31,6 +31,9 @@ class CalendarViewController: UIViewController,FSCalendarDelegate,FSCalendarData
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        startDateLabel.backgroundColor = UIColor(hex: "ffffff")
+        periodDateLabel.backgroundColor = UIColor(hex: "ffffff")
+        tokenLabel.backgroundColor = UIColor(hex: "ffffff")
         // 月ごと
 //        calendarView.setScope(.month, animated: true)
         // 週ごと
@@ -192,15 +195,34 @@ class CalendarViewController: UIViewController,FSCalendarDelegate,FSCalendarData
         dismiss(animated: true)
         // 処理を任せるSearchViewController
 //        let searchVC = SearchViewController()
-        let searchVC = storyboard?.instantiateViewController(withIdentifier: "searchVC") as! SearchViewController
-        self.delegate = searchVC
-        
-        if let dg = self.delegate {
-//            dg.getAPI("進撃の巨人", "001001")
-            dg.getAPI("", "")
-        } else {
-            print("何もしない")
+        if startDate != nil || periodDate != nil {
+            // タブコントローラー
+            let preTC = self.presentingViewController as! UITabBarController
+            // ナビゲーションコントローラー
+            let preNC = preTC.selectedViewController as! UINavigationController
+            // ビューコントローラー
+            let preVC = preNC.topViewController as! SearchViewController
+            // 開始日と終了日を設定する
+            preVC.startDate = stringFormat(date: startDate!, format: format)
+            preVC.periodDate = stringFormat(date: periodDate!, format: format)            
+            // 検索フォームに表示する
+            let startDateText = stringFormat(date: startDate!, format:format)
+            let periodDateText = stringFormat(date: periodDate!, format:format)
+            preVC.search_form.placeholder = "\(startDateText)〜\(periodDateText)"
+            // 日付フィルターを設定してAPI検索を実行する
+            preVC.getAPI("", "", startDateText, periodDateText)
+            // 検索画面に戻る
+            dismiss(animated: true, completion: nil)
         }
+//        let searchVC = storyboard?.instantiateViewController(withIdentifier: "searchVC") as! SearchViewController
+//        self.delegate = searchVC
+//
+//        if let dg = self.delegate {
+////            dg.getAPI("進撃の巨人", "001001")
+//            dg.getAPI("", "")
+//        } else {
+//            print("何もしない")
+//        }
     }
     // 日付を文字型へ変換する関数
     func stringFormat(date:Date, format:String) -> String{

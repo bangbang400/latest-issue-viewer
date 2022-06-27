@@ -8,10 +8,12 @@
 import UIKit
 
 class TabBarViewController: UITabBarController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        // タブの背景色
+//        UITabBar.appearance().barTintColor = UIColor(hex: "00bfff")
+//        UITabBar.appearance().barTintColor = .purple        
     }
 
 }

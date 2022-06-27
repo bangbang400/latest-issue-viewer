@@ -63,6 +63,7 @@ class SearchFilterViewController: UIViewController,UITableViewDelegate,UITableVi
         let preVC = preNC.topViewController as! SearchViewController
         preVC.search_form.placeholder = genreName
         preVC.genreId = genreId
+        preVC.getAPI("", genreId!,"","")
         // 検索画面に戻る
         dismiss(animated: true, completion: nil)
         // 0:root view Controller,n-1:view controller, n-2:１つ前のview controller

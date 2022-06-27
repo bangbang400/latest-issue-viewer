@@ -35,10 +35,12 @@ class SettingDetailViewController: UIViewController,UIPickerViewDelegate,UIPicke
         //　通知用リスト
         notificationDataList = realm.objects(FavoriteList.self).first?.notifiList
         // ラベル
-        countDateLabel.text = "新刊発売の通知日を設定"
+//        countDateLabel.text = "新刊発売の通知日を設定"
         // ボタンのデザイン
-        settingButton.backgroundColor = UIColor.blue
-        settingButton.setTitle("設定する", for: .normal)
+        settingButton.backgroundColor = UIColor(hex: "00bfff") //背景色 00bfff[deepskyblue]
+        settingButton.tintColor = .white //文字色
+        settingButton.layer.cornerRadius = 10 //角
+//        settingButton.setTitle("設定する", for: .normal)
         
         //        // UserDefaultsの保存
         //        for (index,country) in countDateList.enumerated() {

@@ -52,27 +52,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pQd-0u-mZx">
-                                <rect key="frame" x="70" y="384" width="180" height="58"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pQd-0u-mZx">
+                                <rect key="frame" x="97.666666666666686" y="411" width="195" height="54"/>
+                                <color key="backgroundColor" systemColor="systemGreenColor"/>
                                 <color key="tintColor" systemColor="systemGroupedBackgroundColor"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="設定する"/>
                                 <connections>
                                     <action selector="settingButtonAction:" destination="l6N-9z-H91" eventType="touchUpInside" id="3pi-on-nlQ"/>
                                 </connections>
                             </button>
-                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bFn-09-vWu">
-                                <rect key="frame" x="0.0" y="192" width="390" height="162"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bFn-09-vWu">
+                                <rect key="frame" x="0.0" y="175" width="460" height="216"/>
                                 <connections>
                                     <outlet property="dataSource" destination="l6N-9z-H91" id="B49-nO-Sj1"/>
                                     <outlet property="delegate" destination="l6N-9z-H91" id="iuv-dV-0g1"/>
                                 </connections>
                             </pickerView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VMX-Vx-zhc">
-                                <rect key="frame" x="16" y="108" width="288" height="56"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="新刊発売の通知日を設定" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VMX-Vx-zhc">
+                                <rect key="frame" x="66.666666666666686" y="132" width="257" height="27.666666666666657"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -80,6 +78,18 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="lxa-ho-O9X"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="pQd-0u-mZx" firstAttribute="centerX" secondItem="eOo-Ce-1f1" secondAttribute="centerX" id="7G8-La-6G6"/>
+                            <constraint firstItem="bFn-09-vWu" firstAttribute="centerX" secondItem="lxa-ho-O9X" secondAttribute="centerX" id="IQY-dZ-iBG"/>
+                            <constraint firstItem="pQd-0u-mZx" firstAttribute="height" secondItem="lxa-ho-O9X" secondAttribute="height" multiplier="0.08" id="KjV-ND-c1W"/>
+                            <constraint firstItem="VMX-Vx-zhc" firstAttribute="centerX" secondItem="eOo-Ce-1f1" secondAttribute="centerX" id="MyV-bb-4EE"/>
+                            <constraint firstItem="pQd-0u-mZx" firstAttribute="top" secondItem="bFn-09-vWu" secondAttribute="bottom" multiplier="1.05" id="f7I-oE-WrL"/>
+                            <constraint firstItem="bFn-09-vWu" firstAttribute="width" secondItem="eOo-Ce-1f1" secondAttribute="width" id="h3K-BE-8Zy"/>
+                            <constraint firstItem="pQd-0u-mZx" firstAttribute="width" secondItem="eOo-Ce-1f1" secondAttribute="width" multiplier="0.5" id="jbM-BT-Gxk"/>
+                            <constraint firstItem="pQd-0u-mZx" firstAttribute="centerX" secondItem="eOo-Ce-1f1" secondAttribute="centerX" id="k5H-3O-duF"/>
+                            <constraint firstItem="VMX-Vx-zhc" firstAttribute="top" secondItem="eOo-Ce-1f1" secondAttribute="topMargin" multiplier="1.5" id="nbp-11-qH5"/>
+                            <constraint firstItem="bFn-09-vWu" firstAttribute="top" secondItem="VMX-Vx-zhc" secondAttribute="bottom" multiplier="1.1" id="uST-TV-feP"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="3gC-rc-E6O"/>
                     <connections>
@@ -100,7 +110,6 @@
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="g9s-5o-lMR">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
                         <segue destination="yid-Iw-sgL" kind="relationship" relationship="viewControllers" id="paW-TZ-fAn"/>
@@ -122,10 +131,11 @@
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bmi-96-q84">
                                 <rect key="frame" x="67" y="169" width="130" height="31"/>
-                                <color key="backgroundColor" systemColor="systemYellowColor"/>
+                                <color key="backgroundColor" systemColor="systemGreenColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="130" id="4Ov-qm-DPR"/>
                                 </constraints>
+                                <color key="tintColor" systemColor="systemRedColor"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="ジャンル"/>
                                 <connections>
@@ -135,6 +145,13 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="3nL-dc-037">
                                 <rect key="frame" x="0.0" y="220" width="390" height="533.33333333333337"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <label key="tableFooterView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="RLj-yE-10i">
+                                    <rect key="frame" x="0.0" y="0.0" width="390" height="44"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
                                 <connections>
                                     <outlet property="dataSource" destination="c5d-of-Nme" id="R8l-4v-Zb7"/>
                                     <outlet property="delegate" destination="c5d-of-Nme" id="yax-A0-ffh"/>
@@ -149,11 +166,11 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AUH-7U-X2u">
-                                <rect key="frame" x="303.66666666666669" y="169" width="67" height="31"/>
-                                <color key="backgroundColor" systemColor="systemBlueColor"/>
-                                <color key="tintColor" systemColor="secondarySystemGroupedBackgroundColor"/>
+                                <rect key="frame" x="246.66666666666663" y="169" width="124" height="31"/>
+                                <color key="backgroundColor" systemColor="systemGreenColor"/>
+                                <color key="tintColor" systemColor="systemPinkColor"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="クリア"/>
+                                <buttonConfiguration key="configuration" style="plain" title="フィルタクリア"/>
                                 <connections>
                                     <action selector="clearButtonAction:" destination="c5d-of-Nme" eventType="touchUpInside" id="9ZV-ud-Wjb"/>
                                 </connections>
@@ -192,6 +209,7 @@
                         <outlet property="calendarButton" destination="qSs-IG-GFu" id="zhk-kW-dHs"/>
                         <outlet property="clearButton" destination="AUH-7U-X2u" id="pp8-b8-5Jj"/>
                         <outlet property="genreButton" destination="bmi-96-q84" id="RSM-Pk-fmP"/>
+                        <outlet property="notApiDataText" destination="RLj-yE-10i" id="Ojp-Qj-fIA"/>
                         <outlet property="search_form" destination="Igj-Bc-Y6T" id="3u0-Wc-EcR"/>
                         <segue destination="PwB-qF-RMB" kind="show" identifier="toSearchDetailController" id="SE4-pT-stW"/>
                     </connections>
@@ -271,13 +289,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="出版社" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CUd-pX-xgN">
-                                <rect key="frame" x="19.666666666666671" y="374.33333333333331" width="52" height="20.333333333333314"/>
+                                <rect key="frame" x="19.666666666666671" y="374.33333333333331" width="52" height="20"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="発売日" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fuD-6g-OWU">
-                                <rect key="frame" x="19.666666666666671" y="414.33333333333331" width="52" height="21"/>
+                                <rect key="frame" x="19.666666666666671" y="414" width="52" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -505,7 +523,7 @@
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="agD-Be-4a9">
                                 <rect key="frame" x="0.0" y="44" width="390" height="37.333333333333343"/>
-                                <color key="backgroundColor" systemColor="systemYellowColor"/>
+                                <color key="backgroundColor" systemColor="systemGreenColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -525,7 +543,7 @@
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aX5-FP-TGr">
                                 <rect key="frame" x="98.333333333333343" y="85.333333333333329" width="291.66666666666663" height="22.333333333333329"/>
-                                <color key="backgroundColor" systemColor="systemYellowColor"/>
+                                <color key="backgroundColor" systemColor="systemGreenColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -562,7 +580,7 @@
                     <navigationItem key="navigationItem" id="AeV-Lb-7Ym"/>
                     <connections>
                         <outlet property="decisionButton" destination="ZqA-Er-xaO" id="VmV-r5-3ET"/>
-                        <outlet property="fsCal" destination="jTc-VE-ZFY" id="fbO-88-jux"/>
+                        <outlet property="fsCal" destination="jTc-VE-ZFY" id="zLU-lB-sU2"/>
                         <outlet property="periodDateLabel" destination="lOj-IF-3cD" id="hSc-tJ-Chn"/>
                         <outlet property="startDateLabel" destination="aX5-FP-TGr" id="3zf-qA-fZf"/>
                         <outlet property="tokenLabel" destination="agD-Be-4a9" id="ERz-ZA-zvp"/>
@@ -598,20 +616,20 @@
         <image name="gearshape.fill" catalog="system" width="128" height="121"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <image name="star.fill" catalog="system" width="128" height="116"/>
-        <systemColor name="secondarySystemGroupedBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemBlueColor">
-            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGreenColor">
             <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGroupedBackgroundColor">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemPinkColor">
+            <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemYellowColor">
             <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
