@@ -53,7 +53,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pQd-0u-mZx">
-                                <rect key="frame" x="97.666666666666686" y="411" width="195" height="54"/>
+                                <rect key="frame" x="97.666666666666686" y="411.33333333333331" width="195" height="53.666666666666686"/>
                                 <color key="backgroundColor" systemColor="systemGreenColor"/>
                                 <color key="tintColor" systemColor="systemGroupedBackgroundColor"/>
                                 <state key="normal" title="Button"/>
@@ -63,7 +63,7 @@
                                 </connections>
                             </button>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bFn-09-vWu">
-                                <rect key="frame" x="0.0" y="175" width="460" height="216"/>
+                                <rect key="frame" x="0.0" y="176" width="390" height="216"/>
                                 <connections>
                                     <outlet property="dataSource" destination="l6N-9z-H91" id="B49-nO-Sj1"/>
                                     <outlet property="delegate" destination="l6N-9z-H91" id="iuv-dV-0g1"/>

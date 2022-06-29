@@ -25,6 +25,7 @@ struct Book: Codable{
     let isbn:String
     let author:String
     let mediumImageUrl:String?
+    let smallImageUrl:String?
     let salesDate:String
     let itemPrice:Int
     let publisherName:String

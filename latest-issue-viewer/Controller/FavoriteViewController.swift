@@ -40,6 +40,8 @@ class FavoriteViewController: UIViewController,UITableViewDelegate,UITableViewDa
 //        print(favList)
         // ナビゲーションバーの設定
         navigationItem.rightBarButtonItem = editButtonItem
+        // テーブルビューの更新
+        favorite_table_view.reloadData()
     }
     
     override func viewWillAppear(_ animated: Bool) {

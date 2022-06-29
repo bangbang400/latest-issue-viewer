@@ -14,6 +14,7 @@ class Favorite:Object {
     @objc dynamic var title:String = ""
     @objc dynamic var salesDate:String = ""
     @objc dynamic var mediumImageUrl:String?
+    @objc dynamic var smallImageUrl:String?
     
     // Primary Keyの設定
     override static func primaryKey() -> String? {

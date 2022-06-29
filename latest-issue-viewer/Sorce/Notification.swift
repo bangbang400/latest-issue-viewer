@@ -126,31 +126,32 @@ class Notification {
                 content.body = "発売日は\(data.salesDate)"
                 // 本の画像を設定
                 // トーストの画像はロードに失敗するとプッシュ通知自体されないため対策する必要あり
-                if let urlString = data.mediumImageUrl {
-                    // urlを準備
-                    let url = URL(string: urlString)
-                    print("Notification:\(url!)")
-
-                    do{
-                        let attachments = try UNNotificationAttachment(identifier: "image", url: url!, options: nil)
-                        content.attachments = [attachments]
-                        print("Notification:画像の設定ができました！")
-                    } catch {
-                        print("Notification:画像の取得ができませんでした。")
-                    }
-                } else {
-                    // nilの場合は固定画像表示
-                    //content.attachments = UIImage(named: "dog2")
-                    print("Notification:画像の設定失敗")
-                }
+                // 画像表示用のAttachmentを作成します。
+//                if let urlString = data.smallImageUrl {
+//                    // urlを準備
+//                    let url = URL(string: urlString)
+//                    print("Notification:\(url!)")
+//
+//                    do{
+//                        let attachments = try UNNotificationAttachment(identifier: "image", url: url!, options: nil)
+//                        content.attachments = [attachments]
+//                        print("Notification:画像の設定ができました！")
+//                    } catch {
+//                        print("Notification:画像の取得ができませんでした。")
+//                    }
+//                } else {
+//                    // nilの場合は固定画像表示
+//                    //content.attachments = UIImage(named: "dog2")
+//                    print("Notification:画像の設定失敗")
+//                }
                 // 通知音
                 content.sound = UNNotificationSound.default
                 // 直接日時を設定
 //                let triggerDate = DateComponents(month:06, day:27, hour:15, minute:34, second: 00)
-//                let triggerDate = Calendar.current.dateComponents(in: TimeZone.current, from: modifiedDate)
+                let triggerDate = Calendar.current.dateComponents(in: TimeZone.current, from: modifiedDate)
 //                print(triggerDate)
-//                let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDate, repeats: false)
-                let trigger = UNTimeIntervalNotificationTrigger(timeInterval:3, repeats: false)
+                let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDate, repeats: false)
+//                let trigger = UNTimeIntervalNotificationTrigger(timeInterval:3, repeats: false)
                 let request = UNNotificationRequest(identifier: data.isbn, content: content, trigger: trigger)
 //                let request = UNNotificationRequest(identifier: "test", content: content, trigger: trigger)
                 UNUserNotificationCenter.current().add(request)

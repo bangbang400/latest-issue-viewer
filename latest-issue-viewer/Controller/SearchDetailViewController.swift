@@ -21,6 +21,7 @@ class SearchDetailViewController: UIViewController {
     var isbnValue :String?
     var authorNameValue :String?
     var bookImageValue :String?
+    var bookSmallImageValue :String?
     var priceValue :Int?
     var publisherValue :String?
     var salesDateValue:String?
@@ -108,7 +109,7 @@ class SearchDetailViewController: UIViewController {
                     insertID = num + 1
                 }
                 //登録するデータの作成
-                favorite = Favorite(value: ["id" : insertID ,"isbn": isbnValue, "title" : bookTitleValue,"salesDate":salesDateValue,"mediumImageUrl": bookImageValue])
+                favorite = Favorite(value: ["id" : insertID ,"isbn": isbnValue, "title" : bookTitleValue,"salesDate":salesDateValue,"mediumImageUrl": bookImageValue,"smallImageUrl":bookSmallImageValue])
                 
                 try realm.write({ () -> Void in
                     if self.favoriteList == nil {
