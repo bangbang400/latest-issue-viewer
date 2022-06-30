@@ -232,7 +232,7 @@ class SearchViewController: UIViewController,UITableViewDelegate,UITableViewData
             }
         }
         // アプリケーションID
-        let applicationId = "{APPID}"
+        let applicationId = ""
         // URLの結合
         let urlString:String = "\(fixedTitle)&applicationId=\(applicationId)"
         print("文字列時のURL\(urlString)")
